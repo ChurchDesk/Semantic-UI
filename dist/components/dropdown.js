@@ -2390,10 +2390,6 @@ $.fn.dropdown = function(parameters) {
           },
           leftward: function($menu) {
             var $element = $menu || $module;
-            var parentMenu = $element.parent().closest(selector.menu);
-            if (parentMenu.hasClass('transition')) {
-              $element = parentMenu;
-            }
             $element.addClass(className.leftward);
           },
           value: function(value, text, $selected) {
@@ -2749,10 +2745,6 @@ $.fn.dropdown = function(parameters) {
           },
           leftward: function($menu) {
             var $element = $menu || $module;
-            var parentMenu = $element.parent().closest(selector.menu);
-            if (parentMenu.hasClass('transition')) {
-              $element = parentMenu;
-            }
             $element.removeClass(className.leftward);
           },
           visible: function() {
@@ -3126,17 +3118,11 @@ $.fn.dropdown = function(parameters) {
                 ;
             $currentMenu.addClass(className.loading);
             calculations = {
-              childrenWidth: 0,
               contextWidth: $context.outerWidth(),
-              menuOffset  : $currentMenu.offset().left,
-              menuWidth   : $currentMenu.outerWidth()
+              menuOffset: $currentMenu.offset().left,
+              menuWidth: $currentMenu.outerWidth()
             };
-            $currentMenu.find(selector.menu).each(function() {
-              var child = $(this);
-              child.show();
-              calculations.childrenWidth += child[0].offsetWidth;
-            });
-            isOutsideScreen = ((calculations.contextWidth < calculations.menuOffset + calculations.menuWidth + calculations.childrenWidth) || (calculations.menuOffset - $menu.offset().left < 0));
+            isOutsideScreen = (calculations.contextWidth < calculations.menuOffset + calculations.menuWidth) || (calculations.menuOffset - $menu.offset().left < 0);
 
             if(isOutsideScreen) {
               module.verbose('Dropdown cannot fit in context rightward', isOutsideScreen);

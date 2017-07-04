@@ -29371,7 +29371,6 @@ body.dimmable > .dimmer {
 .ui.dropdown .menu > .input {
   width: auto;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   margin: 1.14285714rem 0.78571429rem;
@@ -30229,6 +30228,7 @@ select.ui.dropdown {
 
 .ui.dropdown > .left.menu .menu,
 .ui.dropdown .menu .left.menu {
+  display: block !important;
   left: auto !important;
   right: 100% !important;
   border-radius: 0.28571429rem !important;
